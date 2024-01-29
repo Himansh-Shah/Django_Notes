@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block login_register %}
+<div class="row">
+    <h2>Log In</h2>
+</div>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+        <div role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+              <img src="..." class="rounded me-2" alt="...">
+              <!-- <strong class="me-auto">Notes</strong>
+              <small class="text-body-secondary">11 mins ago</small> -->
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" onclick=closeMessage()></button>
+            </div>
+            <div class="toast-body">
+                {{ message }}
+            </div>
+        </div>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div class="row">
+    <form control="" class="form-group", method="post">
+        {% csrf_token %}
+        <div class="row">
+            <input type="email" name="email" id="username" class="form__input" placeholder="Email">
+        </div>
+        <div class="row">
+            
+            <input type="password" name="password" id="password" class="form__input" placeholder="Password">
+        </div>
+        
+        <div>
+            <input type="submit" value="Login" class="btn">
+        </div>
+    </form>
+</div>
+<div class="row">
+    <p>Don't have an account? <a href="/register/">Register Here</a></p>
+</div>
+
+<script>
+    closeMessage = () =>{
+        message = document.getElementsByClassName("messages")[0]
+        message.style.display = "none";
+    }
+</script>
+{% endblock %}

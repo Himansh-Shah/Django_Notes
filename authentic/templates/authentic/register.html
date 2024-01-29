@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block login_register %}
+<div class="row">
+    <h2>Create an account</h2>
+</div>
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+        <div role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+              {% comment %} <img src="..." class="rounded me-2" alt="..."> {% endcomment %}
+              {% comment %} <strong class="me-auto">Notes</strong> {% endcomment %}
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" onclick=closeMessage()></button>
+            </div>
+            <div class="toast-body" style="color:red;">
+                {{ message }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="row">
+    <form control="" class="form-group" method='post'>
+        {% csrf_token %}
+        <div class="row">
+            <input type="text" name="firstName" id="username" class="form__input" placeholder="First Name">
+        </div>
+        <div class="row">
+            <input type="text" name="lastName" id="username" class="form__input" placeholder="Last Name">
+        </div>
+        <div class="row">
+            <input type="email" name="email" id="username" class="form__input" placeholder="Email">
+        </div>
+        <div class="row">
+            <input type="password" name="password" id="password" class="form__input" placeholder="Password">
+        </div>
+        
+        <div>
+            <input type="submit" value="Login" class="btn">
+        </div>
+    </form>
+</div>
+<div class="row">
+    <p>Already have an account? <a href="/">Login Here</a></p>
+</div>
+
+<script>
+    closeMessage = () =>{
+        message = document.getElementsByClassName("messages")[0]
+        message.style.display = "none";
+    }
+</script>
+{% endblock %}
