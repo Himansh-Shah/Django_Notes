@@ -56,19 +56,29 @@
                     <th><h1>Question</h1></th>
                     <th><h1>Difficulty</h1></th>
                     <th><h1>Topic</h1></th>
+                    <th><h1>Details</h1></th>
                 </tr>
             </thead>
             <tbody>
                 {% for ques in Questions %}
+                <a href="/question_detail/{{ques.id}}">    
                 <tr>
-                    <td>{{ques.title}}</td>
+                    <td>
+                        {{ques.title}}
+                    </td>
                     <td>{{ques.difficulty}}</td>
                     <td>
                         {% for topic in ques.topics.all %}
                         {{topic}},
                         {% endfor %}
                     </td>
+                    <td>
+                        <a href='/question_detail/{{ques.id}}'>
+                        <img src={% static 'application.png' %} height="32" width="32">
+                        </a>
+                    </td>
                 </tr>
+            </a>
                 {% endfor %}
             </tbody>
         </table>

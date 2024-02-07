@@ -17,6 +17,7 @@ class Difficulty(models.Model):
         return self.difficulty
 
 class Question(models.Model):
+    user = models.IntegerField(null = True)
     title = models.CharField(max_length = 200)
     topics = models.ManyToManyField(Topic)
     difficulty = models.ForeignKey(Difficulty, verbose_name=("difficulty"), on_delete=models.CASCADE)

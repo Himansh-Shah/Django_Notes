@@ -18,7 +18,8 @@ def login_page(request):
 
         if not (user==None):
             login(request, user)
-            return redirect('/home/')
+            id = User.objects.filter(username=username)[0].id
+            return redirect(f'/home/{id}')
         else:
             messages.error(request, "Invalid password")
             return redirect('/')
