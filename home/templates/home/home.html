@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-        <div class="flex">
+        <div class="flex" style="padding-top:50px; font-size:20px; font-weight:300; color:#FB667A;">
             <form class="form" method="post">
                 {% csrf_token %}
                 <fieldset>
@@ -73,12 +73,13 @@
                         {% endfor %}
                     </td>
                     <td>
+                        <button href='/question_detail/{{ques.id}}'>
                         <a href='/question_detail/{{ques.id}}'>
                         <img src={% static 'application.png' %} height="32" width="32">
                         </a>
+                        </button>
                     </td>
                 </tr>
-            </a>
                 {% endfor %}
             </tbody>
         </table>
